@@ -1,3 +1,7 @@
+/////////////////////////////////////
+// Changes Visibility to of logistics Center to one bar at base level
+////////////////////////////////////
+
 	public void SetVisibility(global::SessionInformationDropdown.DataType inDataType, float inTime, bool inHighlight, float inNormalizedSessionTime)
 	{
 		this.weatherIcon.gameObject.SetActive(inDataType == global::SessionInformationDropdown.DataType.Clouds);
@@ -7,7 +11,11 @@
 			global::GameUtility.SetActive(this.highLightContainer[i], inHighlight);
 		}
 		global::HQsBuilding_v1 building = global::Game.instance.player.team.headquarters.GetBuilding(global::HQsBuildingInfo.Type.LogisticsCentre);
+		/////////////////////////////////
+		// changed from 5 to 1
+		/////////////////////////////////
 		int num = 1;
+		/////////////////////////////////
 		if (building.isBuilt)
 		{
 			num += (building.currentLevel + 1) * 5;

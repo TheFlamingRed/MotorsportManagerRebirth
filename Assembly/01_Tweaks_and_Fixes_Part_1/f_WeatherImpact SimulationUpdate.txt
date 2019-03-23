@@ -1,3 +1,7 @@
+////////////////////////////////////////////////////////////////////////
+// Fix so that wing angle correctly impacts time loss when in the wet
+////////////////////////////////////////////////////////////////////////
+
 	public override void SimulationUpdate(float inDeltaTime)
 	{
 		base.SimulationUpdate(inDeltaTime);
@@ -6,8 +10,9 @@
 		float num = EasingUtility.EaseByType(EasingUtility.Easing.InOutQuad, 0f, 1f, normalizedTrackWater);
 		num = Mathf.Lerp(1f, 0.5f, num);
 		float num2 = 1f - num;
+
 		float normalizedTrackRubber = this.mWeatherDetails.GetNormalizedTrackRubber();
-		float num3 = 1f - normalizedTrackRubber;
+
 		float num4 = 0f;
 		if (this.mVehicle.championship.series == Championship.Series.SingleSeaterSeries)
 		{
@@ -19,9 +24,14 @@
 			if (normalizedTrackWater > 0f && num5 < 0f)
 			{
 				num5 = Mathf.Abs(num5);
+				///////////////////////////////////////////////////////////////////////////////////////////////////
+				// originally num4 = 1f - Mathf.Clamp01(Mathf.Sin(num5 / normalizedTrackWater * 3.14159274f / 2f));
+				///////////////////////////////////////////////////////////////////////////////////////////////////
 				num4 = 1f - Mathf.Clamp01(Mathf.Sin(num5 * 3.14159274f / 2f));
+				///////////////////////////////////////////////////////////////////////////////////////////////////
 			}
 		}
+
 		float num6 = this.mCarPerformance.trackWater.maxWetTrackTimeCost * num2;
 		float num7 = this.mCarPerformance.trackWater.noRubberOnTrackTimeCost * num3;
 		float num8 = num4 * this.mCarPerformance.trackWater.maxWetSetupPerformanceTimeCost * normalizedTrackWater;

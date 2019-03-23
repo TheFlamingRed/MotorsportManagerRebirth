@@ -1,3 +1,8 @@
+////////////////////////////////////////////////////
+// Changes to camera zoom and rotation.
+// Has not been adjusted for Enhanced Camera Option
+//////////////////////////////////////////////////////
+
 private void ApplyRotation()
 {
 	float num = base.transform.parent.rotation.eulerAngles.x;

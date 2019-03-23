@@ -1,3 +1,10 @@
+////////////////////////////////////////////////////////////////////////
+// Reduced comfort distance to vehicle ahead. 
+// Allows cars to run closer together
+// part of the blue flag fix
+////////////////////////////////////////////////////////////////////////
+	
+	
 	base.OnEnter();
 	if (Game.instance.sessionManager.sessionType == SessionDetails.SessionType.Race)
 	{
